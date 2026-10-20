@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Save Original Image: test page</title>
+<style>
+  body { font: 14px system-ui, sans-serif; margin: 24px; }
+  .case { position: relative; display: inline-block; margin: 0 24px 24px 0; vertical-align: top; }
+  .case img { width: 240px; height: 160px; object-fit: cover; display: block; background: #ddd; }
+  .overlay { position: absolute; inset: 0; }             /* social-site-style transparent cover */
+  .bg { width: 240px; height: 160px; background: #ccc url("img/bg.jpg") center/cover; }
+  .nopointer { pointer-events: none; }
+  p { margin: 4px 0; }
+</style>
+</head>
+<body>
+<h1>Test cases (right-click each)</h1>
+
+<div class="case" id="c1">
+  <img src="img/overlay-640.jpg" srcset="img/overlay-320.jpg 320w, img/overlay-640.jpg 640w, img/overlay-1080.jpg 1080w" sizes="240px" alt="">
+  <div class="overlay"></div>
+  <p>1. Image under a transparent overlay</p>
+</div>
+
+<div class="case" id="c2">
+  <picture>
+    <source type="image/webp" srcset="img/pic-800.webp 800w, img/pic-1600.webp 1600w">
+    <img src="img/pic-800.jpg" alt="">
+  </picture>
+  <p>2. &lt;picture&gt; with WebP sources + JPG fallback</p>
+</div>
+
+<div class="case" id="c3">
+  <a href="img/full/product.jpg" class="woocommerce-product-gallery__image"><img src="img/product-300x300.webp" data-large_image="img/product-large.jpg" alt=""></a>
+  <p>3. Shop gallery: zoom link + data-large_image</p>
+</div>
+
+<div class="case" id="c4">
+  <div class="bg"></div>
+  <p>4. CSS background image</p>
+</div>
+
+<div class="case" id="c5">
+  <img class="nopointer" src="img/ghost.jpg" alt="">
+  <div class="overlay" style="background: rgba(0,0,0,.05)"></div>
+  <p>5. pointer-events:none image under a tinted cover</p>
+</div>
+
+<script>
+  // a typical "no right-click" script
+  document.addEventListener('contextmenu', (e) => e.preventDefault());
+</script>
+</body>
+</html>

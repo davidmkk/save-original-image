@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title data-i18n="extName">Save Original Image</title>
+<link rel="stylesheet" href="ui.css">
+<style>
+  main { max-width: 640px; margin: 0 auto; padding: 32px 20px 48px; }
+  h1 { font-size: 22px; display: flex; gap: 10px; align-items: center; }
+  h1 img { width: 28px; height: 28px; }
+  h2 { font-size: 15px; margin: 28px 0 10px; }
+  fieldset { border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px; margin: 0; display: grid; gap: 10px; }
+  .saved { color: var(--accent); font-size: 13px; min-height: 20px; margin: 10px 0 0; }
+  .shortcut { display: flex; gap: 12px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+  input[type=text] { font: inherit; width: 100%; padding: 7px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--card); color: var(--fg); margin-top: 6px; }
+  .field { display: block; }
+  ul { padding-left: 20px; margin: 0; } li { margin: 4px 0; }
+</style>
+</head>
+<body>
+<main>
+  <h1><img src="icons/48.png" alt=""><span data-i18n="extName">Save Original Image</span></h1>
+  <p class="muted" data-i18n="optIntro"></p>
+
+  <h2 data-i18n="optFallbackH"></h2>
+  <fieldset id="fallback">
+    <label><input type="radio" name="fallback" value="ask"> <span data-i18n="optFbAsk"></span></label>
+    <label><input type="radio" name="fallback" value="webp"> <span data-i18n="optFbWebp"></span></label>
+    <label><input type="radio" name="fallback" value="jpg"> <span data-i18n="optFbJpg"></span></label>
+    <label><input type="radio" name="fallback" value="png"> <span data-i18n="optFbPng"></span></label>
+  </fieldset>
+
+  <h2 data-i18n="optRightClickH"></h2>
+  <fieldset>
+    <label><input type="checkbox" id="underCursor"> <span data-i18n="optUnderCursor"></span></label>
+    <label><input type="checkbox" id="unblockAlt"> <span data-i18n="optUnblock"></span></label>
+    <label><input type="checkbox" id="showConvert"> <span data-i18n="optShowConvert"></span></label>
+    <div class="shortcut"><span id="shortcut"></span><button id="changeShortcut" data-i18n="optShortcutChange"></button></div>
+  </fieldset>
+
+  <h2 data-i18n="optSavingH"></h2>
+  <fieldset>
+    <label><input type="checkbox" id="saveAs"> <span data-i18n="optSaveAs"></span></label>
+    <span class="field"><span data-i18n="optFolder"></span>
+      <input type="text" id="folder" data-i18n-placeholder="optFolderPh" spellcheck="false"></span>
+    <label><input type="checkbox" id="perSite"> <span data-i18n="optPerSite"></span></label>
+  </fieldset>
+  <p class="saved" id="saved" aria-live="polite"></p>
+
+  <h2 data-i18n="optWhereH"></h2>
+  <ul class="muted">
+    <li data-i18n="optWhere1"></li>
+    <li data-i18n="optWhere2"></li>
+    <li data-i18n="optWhere3"></li>
+    <li data-i18n="optWhere4"></li>
+    <li data-i18n="optWhere5"></li>
+  </ul>
+  <p class="muted" style="margin-top:16px" data-i18n="optPrivacy"></p>
+</main>
+<script type="module" src="options.js"></script>
+</body>
+</html>

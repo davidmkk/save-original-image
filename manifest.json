@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_extName__",
+  "version": "2.1.0",
+  "description": "__MSG_extDesc__",
+  "default_locale": "en",
+  "homepage_url": "https://github.com/davidmkk/save-original-image",
+  "minimum_chrome_version": "116",
+  "permissions": ["contextMenus", "downloads", "scripting", "storage"],
+  "host_permissions": ["<all_urls>"],
+  "background": { "service_worker": "background.js", "type": "module" },
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["picker.js"],
+    "run_at": "document_start",
+    "all_frames": true,
+    "match_about_blank": true
+  }],
+  "commands": {
+    "save-under-cursor": {
+      "suggested_key": { "default": "Alt+Shift+S" },
+      "description": "__MSG_commandSave__"
+    }
+  },
+  "options_ui": { "page": "options.html", "open_in_tab": true },
+  "action": { "default_title": "__MSG_actionTitle__" },
+  "icons": { "16": "icons/16.png", "48": "icons/48.png", "128": "icons/128.png" }
+}

@@ -1,0 +1,38 @@
+Save Original Image
+Copyright (c) 2026 David Kurt. All rights reserved.
+
+This is source-available software, not open-source software. The source code
+is public so that you can use it, read it and suggest improvements. Any right
+not expressly granted below is reserved by the author.
+
+YOU MAY, free of charge:
+
+  1. Install and use the extension, for personal or work purposes.
+  2. Read and study the source code.
+  3. Fork this repository on GitHub, as GitHub's Terms of Service allow, and
+     make changes in your fork, either to propose them back to this
+     repository (pull requests) or for your own private use.
+
+YOU MAY NOT, without the author's prior written permission:
+
+  1. Publish, distribute, sublicense, rent or sell the extension, or any
+     modified or derived version of it, or any substantial part of its code,
+     in the Chrome Web Store, Microsoft Edge Add-ons, Firefox Add-ons, Opera
+     Add-ons or any other store, website, package registry or channel.
+  2. Remove or change this notice or the author's name in any copy.
+  3. Use the name "Save Original Image", "Guardar imagen original" or the
+     extension's icon for another product.
+
+CONTRIBUTIONS: by submitting a pull request, patch, issue text or any other
+contribution, you agree that the author may use, change and distribute it,
+under these terms or any other terms the author chooses.
+
+PERMISSION REQUESTS: open an issue at
+https://github.com/davidmkk/save-original-image/issues
+
+DISCLAIMER: THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO
+EVENT SHALL THE AUTHOR BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

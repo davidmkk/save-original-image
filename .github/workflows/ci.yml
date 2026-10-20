@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Unit tests
+        run: npm test
+      - name: Check every file parses
+        run: for f in *.js scripts/*.mjs tests/*.mjs; do node --check "$f"; done
+      - name: Full flow with a fake chrome API (uses real sites, so it doesn't block releases)
+        continue-on-error: true
+        run: |
+          python3 -m http.server 8766 --bind 127.0.0.1 >/dev/null 2>&1 &
+          sleep 1
+          node tests/background.harness.mjs
+      - name: Build
+        run: node scripts/build.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: extension-zip
+          path: dist/*.zip
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Version in manifest matches the tag
+        run: test "v$(node -p "require('./manifest.json').version")" = "$GITHUB_REF_NAME"
+      - run: node scripts/build.mjs
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1 \
+            && gh release upload "$GITHUB_REF_NAME" dist/*.zip --clobber \
+            || gh release create "$GITHUB_REF_NAME" dist/*.zip --title "$GITHUB_REF_NAME" --generate-notes
